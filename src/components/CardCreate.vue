@@ -1,14 +1,14 @@
 <template>
-  <form action="#" :class="[active || bodyExists ? 'active' : '']" class="list-create">
+  <form action="#" :class="[active || bodyExists ? 'active' : '']" class="card-create">
     <input
       type="text"
-      class="list-create__input"
-      v-model="listTitle"
+      class="card-create__input"
+      v-model="cardTitle"
       :placeholder="placeholder"
       @focusin="focusIn"
       @focusout="focusOut"
     />
-    <button type="submit" class="list-create__button" v-if="active || bodyExists">リストを追加</button>
+    <button type="submit" class="card-create__button" v-if="active || bodyExists">カードを追加</button>
   </form>
 </template>
 
@@ -16,41 +16,38 @@
 export default {
   data() {
     return {
-      listTitle: "",
-      placeholder: "新しいリストを追加",
+      cardTitle: "",
+      placeholder: "新しいカードを追加",
       active: false
     };
   },
   methods: {
     focusIn() {
       this.active = true;
-      this.placeholder = "リストのタイトルを入力...";
+      this.placeholder = "カードのタイトルを入力...";
     },
     focusOut() {
       this.active = false;
-      this.placeholder = "新しいリストを追加";
+      this.placeholder = "新しいカードを追加";
     }
   },
   computed: {
     bodyExists() {
-      return this.listTitle.length > 0;
+      return this.cardTitle.length > 0;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.list-create {
+.card-create {
   $this: &;
-  margin-left: 2rem;
-  width: 16rem;
-  padding: 0 0.5rem;
+  margin-top: 1rem;
   border-radius: 0.5rem;
   &__input {
     border-radius: 0.5rem;
-    width: 15rem;
-    backdrop-filter: blur(10px);
-    background-color: rgba(#1876d0, 0.5);
+    width: 100%;
+    background-color: inherit;
     border: none;
     font-size: 1rem;
     padding: 0.75rem 1rem;
@@ -72,6 +69,7 @@ export default {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     #{$this}__input {
+      border: 1px solid #aab4c4;
       color: #333;
       background-color: #fff;
       &::placeholder {

@@ -8,16 +8,19 @@
       <Card />
       <Card />
       <Card />
+      <CardCreate />
     </div>
   </div>
 </template>
 
 <script>
 import Card from "@/components/Card";
+import CardCreate from "@/components/CardCreate";
 
 export default {
   components: {
-    Card
+    Card,
+    CardCreate
   }
 };
 </script>
