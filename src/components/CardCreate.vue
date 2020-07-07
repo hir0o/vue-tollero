@@ -42,7 +42,7 @@ export default {
 <style lang="scss" scoped>
 .card-create {
   $this: &;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   border-radius: 0.5rem;
   &__input {
     border-radius: 0.5rem;
@@ -72,6 +72,7 @@ export default {
       border: 1px solid #aab4c4;
       color: #333;
       background-color: #fff;
+      font-weight: bold;
       &::placeholder {
         color: #5e6d83;
       }

@@ -43,12 +43,12 @@ export default {
 .list-create {
   $this: &;
   margin-left: 2rem;
-  width: 16rem;
+  width: 19rem;
   padding: 0 0.5rem;
   border-radius: 0.5rem;
   &__input {
     border-radius: 0.5rem;
-    width: 15rem;
+    width: 18rem;
     backdrop-filter: blur(10px);
     background-color: rgba(#1876d0, 0.5);
     border: none;
@@ -74,6 +74,7 @@ export default {
     #{$this}__input {
       color: #333;
       background-color: #fff;
+      font-weight: bold;
       &::placeholder {
         color: #5e6d83;
       }
