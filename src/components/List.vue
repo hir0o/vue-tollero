@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <div class="list__header">
-      <h3 class="list__ttl">リストタイトル</h3>
+      <h3 class="list__ttl">{{ list.title }}</h3>
       <button class="list__delete">×</button>
     </div>
     <div class="list__content">
@@ -18,6 +18,12 @@ import Card from "@/components/Card";
 import CardCreate from "@/components/CardCreate";
 
 export default {
+  props: {
+    list: {
+      type: Object,
+      required: false
+    }
+  },
   components: {
     Card,
     CardCreate

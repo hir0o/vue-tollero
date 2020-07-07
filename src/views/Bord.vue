@@ -3,9 +3,7 @@
     <h2 class="bord__ttl">カード一覧</h2>
     <div class="bord__wrap">
       <div class="bord__cards">
-        <List />
-        <List />
-        <List />
+        <List v-for="list in lists" :list="list" :key="list.id" />
         <ListCreate />
       </div>
     </div>
@@ -20,6 +18,11 @@ export default {
   components: {
     List,
     ListCreate
+  },
+  computed: {
+    lists() {
+      return this.$store.state.lists;
+    }
   }
 };
 </script>
