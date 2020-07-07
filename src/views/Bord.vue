@@ -6,9 +6,7 @@
         <List />
         <List />
         <List />
-        <List />
-        <List />
-        <List />
+        <ListCreate />
       </div>
     </div>
   </div>
@@ -16,10 +14,12 @@
 
 <script>
 import List from "@/components/List";
+import ListCreate from "@/components/ListCreate";
 
 export default {
   components: {
-    List
+    List,
+    ListCreate
   }
 };
 </script>
@@ -38,6 +38,7 @@ export default {
   }
   &__cards {
     display: inline-flex;
+    align-items: flex-start;
   }
   &__ttl {
     margin-left: 2rem;
