@@ -2,7 +2,7 @@
   <div class="list">
     <div class="list__header">
       <h3 class="list__ttl">{{ list.title }}</h3>
-      <button class="list__delete">×</button>
+      <button class="list__delete" @click="removeList">×</button>
     </div>
     <div class="list__content">
       <Card v-for="card in list.cards" :key="card.id" :title="card" />
@@ -29,6 +29,15 @@ export default {
   components: {
     Card,
     CardCreate
+  },
+  methods: {
+    removeList() {
+      if (confirm("リストを削除しますか？")) {
+        this.$store.dispatch("removeList", {
+          listIndex: this.listIndex
+        });
+      }
+    }
   }
 };
 </script>
