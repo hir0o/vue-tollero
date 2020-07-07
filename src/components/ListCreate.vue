@@ -1,9 +1,13 @@
 <template>
-  <form action="#" :class="[active || bodyExists ? 'active' : '']" class="list-create">
+  <form
+    @submit.prevent="addList"
+    :class="[active || bodyExists ? 'active' : '']"
+    class="list-create"
+  >
     <input
       type="text"
       class="list-create__input"
-      v-model="listTitle"
+      v-model="title"
       :placeholder="placeholder"
       @focusin="focusIn"
       @focusout="focusOut"
@@ -16,12 +20,17 @@
 export default {
   data() {
     return {
-      listTitle: "",
+      title: "",
       placeholder: "新しいリストを追加",
       active: false
     };
   },
   methods: {
+    addList() {
+      console.log(this.title);
+      this.$store.dispatch("addList", this.title);
+      this.title = "";
+    },
     focusIn() {
       this.active = true;
       this.placeholder = "リストのタイトルを入力...";
@@ -33,7 +42,7 @@ export default {
   },
   computed: {
     bodyExists() {
-      return this.listTitle.length > 0;
+      return this.title.length > 0;
     }
   }
 };
