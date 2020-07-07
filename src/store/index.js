@@ -22,6 +22,11 @@ export default new Vuex.Store({
     removeList(state, payload) {
       state.lists.splice(payload.listIndex, 1)
     },
+    removeCard(state, payload) {
+      console.log(payload);
+
+      state.lists[payload.listIndex].cards.splice(payload.cardIndex, 1)
+    },
   },
   actions: {
     addList({
@@ -38,6 +43,11 @@ export default new Vuex.Store({
       commit
     }, payload) {
       commit('removeList', payload)
+    },
+    removeCard({
+      commit
+    }, payload) {
+      commit('removeCard', payload)
     }
   },
   modules: {}

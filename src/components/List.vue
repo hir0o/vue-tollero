@@ -5,7 +5,13 @@
       <button class="list__delete" @click="removeList">×</button>
     </div>
     <div class="list__content">
-      <Card v-for="card in list.cards" :key="card.id" :title="card" />
+      <Card
+        v-for="(card, index) in list.cards"
+        :key="card.id"
+        :title="card"
+        :cardIndex="index"
+        :listIndex="listIndex"
+      />
       <CardCreate :listIndex="listIndex" />
     </div>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <p class="card__body">{{ title }}</p>
-    <button class="card__delete" @click="deleteCard">×</button>
+    <button class="card__delete" @click="removeCard">×</button>
   </div>
 </template>
 
@@ -11,11 +11,26 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    cardIndex: {
+      type: Number,
+      required: true
+    },
+    listIndex: {
+      type: Number,
+      required: true
     }
   },
   methods: {
-    deleteCard() {
-      console.log("削除");
+    removeCard() {
+      console.log(this.cardIndex);
+
+      if (confirm("カードを削除しますか？")) {
+        this.$store.dispatch("removeCard", {
+          listIndex: this.listIndex,
+          cardIndex: this.cardIndex
+        });
+      }
     }
   }
 };
