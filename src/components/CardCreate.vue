@@ -33,6 +33,10 @@ export default {
   },
   methods: {
     addCard() {
+      if (this.title == "") {
+        alert("内容を入力してください。");
+        return false;
+      }
       this.$store.dispatch("addCard", {
         title: this.title,
         listIndex: this.listIndex

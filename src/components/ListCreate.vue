@@ -27,7 +27,10 @@ export default {
   },
   methods: {
     addList() {
-      console.log(this.title);
+      if (this.title == "") {
+        alert("内容を入力してください。");
+        return false;
+      }
       this.$store.dispatch("addList", this.title);
       this.title = "";
     },
