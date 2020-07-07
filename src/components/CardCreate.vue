@@ -1,9 +1,13 @@
 <template>
-  <form action="#" :class="[active || bodyExists ? 'active' : '']" class="card-create">
+  <form
+    @submit.prevent="addCard"
+    :class="[active || bodyExists ? 'active' : '']"
+    class="card-create"
+  >
     <input
       type="text"
       class="card-create__input"
-      v-model="cardTitle"
+      v-model="title"
       :placeholder="placeholder"
       @focusin="focusIn"
       @focusout="focusOut"
@@ -14,14 +18,27 @@
 
 <script>
 export default {
+  props: {
+    listIndex: {
+      type: Number,
+      required: true
+    }
+  },
   data() {
     return {
-      cardTitle: "",
+      title: "",
       placeholder: "新しいカードを追加",
       active: false
     };
   },
   methods: {
+    addCard() {
+      this.$store.dispatch("addCard", {
+        title: this.title,
+        listIndex: this.listIndex
+      });
+      this.title = "";
+    },
     focusIn() {
       this.active = true;
       this.placeholder = "カードのタイトルを入力...";
@@ -33,7 +50,7 @@ export default {
   },
   computed: {
     bodyExists() {
-      return this.cardTitle.length > 0;
+      return this.title.length > 0;
     }
   }
 };

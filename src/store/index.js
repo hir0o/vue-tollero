@@ -9,19 +9,29 @@ export default new Vuex.Store({
   },
   mutations: {
     addList(state, title) {
-      console.log(title);
       state.lists.push({
-        title
+        title: title,
+        cards: []
       })
+    },
+    addCard(state, payload) {
+      console.log(payload);
+
+      state.lists[payload.listIndex].cards.push(
+        payload.title
+      )
     }
   },
   actions: {
     addList({
       commit
     }, title) {
-      console.log("わあああああ");
-
       commit('addList', title)
+    },
+    addCard({
+      commit
+    }, payload) {
+      commit('addCard', payload)
     }
   },
   modules: {}

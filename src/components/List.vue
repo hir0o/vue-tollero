@@ -5,10 +5,8 @@
       <button class="list__delete">×</button>
     </div>
     <div class="list__content">
-      <Card />
-      <Card />
-      <Card />
-      <CardCreate />
+      <Card v-for="card in list.cards" :key="card.id" :title="card" />
+      <CardCreate :listIndex="listIndex" />
     </div>
   </div>
 </template>
@@ -21,7 +19,11 @@ export default {
   props: {
     list: {
       type: Object,
-      required: false
+      required: true
+    },
+    listIndex: {
+      type: Number,
+      required: true
     }
   },
   components: {

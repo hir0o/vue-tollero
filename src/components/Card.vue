@@ -1,14 +1,20 @@
 <template>
   <div class="card">
-    <p class="card__body">タスクです。</p>
-    <button class="card__delete" @click="deleteTask">×</button>
+    <p class="card__body">{{ title }}</p>
+    <button class="card__delete" @click="deleteCard">×</button>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    title: {
+      type: String,
+      required: true
+    }
+  },
   methods: {
-    deleteTask() {
+    deleteCard() {
       console.log("削除");
     }
   }

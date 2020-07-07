@@ -3,7 +3,7 @@
     <h2 class="bord__ttl">カード一覧</h2>
     <div class="bord__wrap">
       <div class="bord__cards">
-        <List v-for="list in lists" :list="list" :key="list.id" />
+        <List v-for="(list, index) in lists" :list="list" :listIndex="index" :key="list.id" />
         <ListCreate />
       </div>
     </div>
