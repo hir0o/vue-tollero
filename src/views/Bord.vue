@@ -2,7 +2,7 @@
   <div class="bord">
     <h2 class="bord__ttl">カード一覧</h2>
     <div class="bord__wrap">
-      <div class="bord__cards">
+      <Draggable class="bord__cards" :options="{animation: 150}">
         <List
           v-for="(list, index) in lists"
           :list="list"
@@ -11,7 +11,7 @@
           @change="movingCard"
         />
         <ListCreate />
-      </div>
+      </Draggable>
     </div>
   </div>
 </template>
@@ -19,11 +19,13 @@
 <script>
 import List from "@/components/List";
 import ListCreate from "@/components/ListCreate";
+import Draggable from "vuedraggable";
 
 export default {
   components: {
     List,
-    ListCreate
+    ListCreate,
+    Draggable
   },
   computed: {
     lists() {
