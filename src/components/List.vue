@@ -5,13 +5,15 @@
       <button class="list__delete" @click="removeList">×</button>
     </div>
     <div class="list__content">
-      <Card
-        v-for="(card, index) in list.cards"
-        :key="card.id"
-        :title="card"
-        :cardIndex="index"
-        :listIndex="listIndex"
-      />
+      <Draggable :options="{group:'cards', animation: 150}" @end="$emit('change')">
+        <Card
+          v-for="(card, index) in list.cards"
+          :key="card.id"
+          :title="card"
+          :cardIndex="index"
+          :listIndex="listIndex"
+        />
+      </Draggable>
       <CardCreate :listIndex="listIndex" />
     </div>
   </div>
@@ -20,6 +22,7 @@
 <script>
 import Card from "@/components/Card";
 import CardCreate from "@/components/CardCreate";
+import Draggable from "vuedraggable";
 
 export default {
   props: {
@@ -34,7 +37,8 @@ export default {
   },
   components: {
     Card,
-    CardCreate
+    CardCreate,
+    Draggable
   },
   methods: {
     removeList() {
