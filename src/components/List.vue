@@ -5,7 +5,11 @@
       <button class="list__delete" @click="removeList">×</button>
     </div>
     <div class="list__content">
-      <Draggable :options="{group:'cards', animation: 150}" @end="$emit('change')">
+      <Draggable
+        :options="{group:'cards', animation: 150}"
+        :list="list.cards"
+        @end="$emit('change')"
+      >
         <Card
           v-for="(card, index) in list.cards"
           :key="card.id"

@@ -1,8 +1,9 @@
 <template>
   <div class="bord">
     <h2 class="bord__ttl">カード一覧</h2>
+    {{ lists }}
     <div class="bord__wrap">
-      <Draggable class="bord__cards" :options="{animation: 150}">
+      <Draggable class="bord__cards" :options="{animation: 150}" @end="movingList" :list="lists">
         <List
           v-for="(list, index) in lists"
           :list="list"
@@ -34,7 +35,12 @@ export default {
   },
   methods: {
     movingCard() {
-      console.log("カードが変更された");
+      this.$store.dispatch("updateList", { lists: this.lists });
+    },
+    movingList() {
+      console.log("リスト更新");
+
+      this.$store.dispatch("updateList", { lists: this.lists });
     }
   }
 };

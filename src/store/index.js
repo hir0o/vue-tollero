@@ -5,7 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    lists: []
+    lists: [{
+      "title": "リスト１",
+      "cards": ["カード１", "カード２", "カード３"]
+    }, {
+      "title": "リスト２",
+      "cards": ["カード４"]
+    }, {
+      "title": "リスト３",
+      "cards": []
+    }]
   },
   mutations: {
     addList(state, title) {
@@ -23,10 +32,11 @@ export default new Vuex.Store({
       state.lists.splice(payload.listIndex, 1)
     },
     removeCard(state, payload) {
-      console.log(payload);
-
       state.lists[payload.listIndex].cards.splice(payload.cardIndex, 1)
     },
+    updateList(state, payload) {
+      state.lists = payload.lists
+    }
   },
   actions: {
     addList({
@@ -48,6 +58,11 @@ export default new Vuex.Store({
       commit
     }, payload) {
       commit('removeCard', payload)
+    },
+    updateList({
+      commit
+    }, payload) {
+      commit('updateList', payload)
     }
   },
   modules: {}
