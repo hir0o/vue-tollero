@@ -3,7 +3,13 @@
     <h2 class="bord__ttl">カード一覧</h2>
     <div class="bord__wrap">
       <div class="bord__cards">
-        <List v-for="(list, index) in lists" :list="list" :listIndex="index" :key="list.id" />
+        <List
+          v-for="(list, index) in lists"
+          :list="list"
+          :listIndex="index"
+          :key="list.id"
+          @change="movingCard"
+        />
         <ListCreate />
       </div>
     </div>
@@ -22,6 +28,11 @@ export default {
   computed: {
     lists() {
       return this.$store.state.lists;
+    }
+  },
+  methods: {
+    movingCard() {
+      console.log("カードが変更された");
     }
   }
 };
