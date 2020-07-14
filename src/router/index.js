@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Bord from '../views/Bord.vue'
+import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -8,6 +9,11 @@ const routes = [{
     path: '/',
     name: 'Bord',
     component: Bord
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
   {
     path: '/about',
