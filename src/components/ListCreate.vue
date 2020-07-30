@@ -1,7 +1,7 @@
 <template>
   <form
     @submit.prevent="addList"
-    :class="[active || bodyExists ? 'active' : '']"
+    :class="active || bodyExists ? 'active' : ''"
     class="list-create"
   >
     <input

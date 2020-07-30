@@ -6,7 +6,7 @@ import firebase from 'firebase'
 
 Vue.config.productionTip = false
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyB_Xb__kVEp096k7CgTSMH5BIsY7-Tv6Jo",
   authDomain: "vue-tollero.firebaseapp.com",
   databaseURL: "https://vue-tollero.firebaseio.com",
@@ -18,7 +18,6 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
 new Vue({
   router,

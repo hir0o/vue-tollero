@@ -23,8 +23,6 @@ export default {
   },
   methods: {
     removeCard() {
-      console.log(this.cardIndex);
-
       if (confirm("カードを削除しますか？")) {
         this.$store.dispatch("removeCard", {
           listIndex: this.listIndex,

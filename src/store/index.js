@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import firebase from 'firebase'
+import router from '../router'
 
 Vue.use(Vuex)
 
@@ -15,7 +16,8 @@ export default new Vuex.Store({
     }, {
       "title": "リスト３",
       "cards": []
-    }]
+    }],
+    loginUser: null
   },
   mutations: {
     addList(state, title) {
@@ -29,45 +31,43 @@ export default new Vuex.Store({
         payload.title
       )
     },
-    removeList(state, payload) {
-      state.lists.splice(payload.listIndex, 1)
-    },
     removeCard(state, payload) {
       state.lists[payload.listIndex].cards.splice(payload.cardIndex, 1)
     },
     updateList(state, payload) {
       state.lists = payload.lists
+    },
+    setLoginUser(state, user) {
+      state.loginUser = user
     }
   },
   actions: {
-    addList({
-      commit
-    }, title) {
+    addList({commit}, title) {
       commit('addList', title)
     },
-    addCard({
-      commit
-    }, payload) {
+    addCard({commit}, payload) {
       commit('addCard', payload)
     },
-    removeList({
-      commit
-    }, payload) {
+    removeList({commit}, payload) {
       commit('removeList', payload)
     },
-    removeCard({
-      commit
-    }, payload) {
+    removeCard({commit}, payload) {
       commit('removeCard', payload)
     },
-    updateList({
-      commit
-    }, payload) {
+    updateList({commit}, payload) {
       commit('updateList', payload)
     },
     login() {
-      const google_auth_provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithRedirect(google_auth_provider)
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithRedirect(provider).then(()=> {
+        router.push('/')
+      });
+    },
+    logout() {
+      firebase.auth().signOut()
+    },
+    setLoginUser({commit}, user) {
+      commit('setLoginUser', user)
     }
   },
   modules: {}

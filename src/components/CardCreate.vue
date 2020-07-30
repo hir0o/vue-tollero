@@ -38,8 +38,8 @@ export default {
         return false;
       }
       this.$store.dispatch("addCard", {
-        title: this.title,
-        listIndex: this.listIndex
+        listIndex: this.listIndex,
+        title: this.title
       });
       this.title = "";
     },
